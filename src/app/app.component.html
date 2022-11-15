@@ -1,0 +1,11 @@
+<div [formGroup]="userForm">
+    <label>
+        First Name:
+        <input type="text" formControlName="firstName">
+    </label>
+    <label>
+        Company Name:
+        <input type="text" formControlName="company">
+    </label>
+    <button (click)="save()" type="submit">Submit Application</button>
+</div>
