@@ -8,7 +8,7 @@ import {Observable } from 'rxjs';
 export class WebSocketService {
 
   socket: SocketIO.Socket;
-  readonly uri = 'ws://3.92.234.119:80';
+  readonly uri = 'ws://18.212.58.116:80';
 
   constructor() { 
     this.socket = SocketIO.connect(this.uri);
@@ -28,6 +28,10 @@ export class WebSocketService {
 
   joinCompany(data: any) {
     this.emit("join", data)
+  }
+
+  disconnect() {
+    return this.socket.emit('disconnect')
   }
 
   // sendLocation() {

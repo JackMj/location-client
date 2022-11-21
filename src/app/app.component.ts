@@ -49,7 +49,8 @@ export class AppComponent {
   }
 
   successCallback = (position: any) => {
-
+    console.log("position: ", position);
+    
     setInterval(() => {
       const { firstName, company } = this.userForm.value;
       this.websocketService.emit('user-location', {
@@ -57,6 +58,8 @@ export class AppComponent {
         company: company,
         latitude: position.coords.latitude || '',
         longitude: position.coords.longitude || '',
+        accuaracy: position.accuaracy,
+        speed: position.speed,
       });
     }, 10000);
   };
@@ -64,4 +67,8 @@ export class AppComponent {
   errorCallback = (error: any) => {
     console.log(error);
   };
+
+  ngOnDestroy() {
+    this.websocketService.disconnect();
+  }
 }
